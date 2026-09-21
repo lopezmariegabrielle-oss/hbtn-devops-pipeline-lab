@@ -1,0 +1,44 @@
+=== docker compose ps ===
+NAME                             IMAGE                          COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+hbtn-devops-pipeline-lab-app-1   hbtn-devops-pipeline-lab-app   "docker-entrypoint.s…"   app       7 seconds ago   Up Less than a second    0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+hbtn-devops-pipeline-lab-db-1    postgres:16-alpine             "docker-entrypoint.s…"   db        7 seconds ago   Up 5 seconds (healthy)   5432/tcp
+
+=== test:unit ===
+ Container hbtn-devops-pipeline-lab-db-1 Running 
+ Container hbtn-devops-pipeline-lab-db-1 Waiting 
+ Container hbtn-devops-pipeline-lab-db-1 Healthy 
+ Container hbtn-devops-pipeline-lab-app-run-76a03255d09a Creating 
+ Container hbtn-devops-pipeline-lab-app-run-76a03255d09a Created 
+
+> hbtn-devops-pipeline-lab@1.0.0 test:unit
+> jest --runInBand tests/unit
+
+PASS tests/unit/items.unit.test.js
+PASS tests/unit/health.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        0.283 s
+Ran all test suites matching tests/unit.
+
+=== test:integration ===
+ Container hbtn-devops-pipeline-lab-db-1 Running 
+ Container hbtn-devops-pipeline-lab-db-1 Waiting 
+ Container hbtn-devops-pipeline-lab-db-1 Healthy 
+ Container hbtn-devops-pipeline-lab-app-run-642a647795af Creating 
+ Container hbtn-devops-pipeline-lab-app-run-642a647795af Created 
+
+> hbtn-devops-pipeline-lab@1.0.0 test:integration
+> jest --runInBand tests/integration
+
+PASS tests/integration/items.int.test.js
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        0.273 s
+Ran all test suites matching tests/integration.
+
+=== /health ===
+{"status":"ok"}
